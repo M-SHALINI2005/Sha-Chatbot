@@ -1,44 +1,26 @@
 import pandas as pd
-import re
 
 df = pd.read_csv("data/books.csv")
 
-def get_books():
-    return df
+def search_books(plan):
 
-def clean_number(x):
-    if pd.isna(x):
-        return x
-    return float(re.findall(r"\d+\.?\d*", str(x))[0])
+    data = df.copy()
 
-df["average_rating"] = df["average_rating"].apply(clean_number)
-df["num_pages"] = df["num_pages"].apply(clean_number)
-df["ratings_count"] = df["ratings_count"].apply(clean_number)
-df["published_year"] = df["published_year"].apply(clean_number)
+    filters = plan.get("filters", {})
 
-def search_books(query):
-    query = query.lower()
-    df = get_books()
+    if filters.get("title"):
+        data = data[data["title"].str.contains(filters["title"], case=False, na=False)]
 
-    # Top N books by rating
-    if "top" in query and "rating" in query:
-        n = [int(s) for s in query.split() if s.isdigit()]
-        n = n[0] if n else 5
+    if filters.get("author"):
+        data = data[data["authors"].str.contains(filters["author"], case=False, na=False)]
 
-        result = df.sort_values("average_rating", ascending=False).head(n)
+    if filters.get("category"):
+        data = data[data["categories"].str.contains(filters["category"], case=False, na=False)]
 
-    # Books by author
-    elif "author" in query:
-        name = query.split("author")[-1].strip()
-        result = df[df["authors"].str.contains(name, case=False, na=False)]
+    sort_by = plan.get("sort_by")
+    if sort_by and sort_by in data.columns:
+        data = data.sort_values(sort_by, ascending=False)
 
-    # Books by category
-    elif "category" in query or "genre" in query:
-        name = query.split()[-1]
-        result = df[df["categories"].str.contains(name, case=False, na=False)]
+    limit = plan.get("limit", 5)
 
-    # Default
-    else:
-        result = df.head(3)
-
-    return result.to_dict(orient="records")
+    return data.head(limit).to_dict(orient="records")

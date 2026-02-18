@@ -1,0 +1,4 @@
+backend - uvicorn app.main:app --reload
+
+frontend - cd book-chatbot-ui
+         - npm start
