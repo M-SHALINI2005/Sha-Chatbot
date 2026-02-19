@@ -5,6 +5,7 @@ It intelligently interprets queries, retrieves book information from a CSV file,
 
 
 FEATURES:
+
 AI-Driven Understanding:
 - Uses *Gemini LLM* to understand user intent (general vs book queries).
 - Parses queries like:
