@@ -1,4 +1,4 @@
-Sha-Chatbot: *INTELLIGENT BOOK RECOMMENDATION SYSTEM*
+Sha-Chatbot - *AI BOOK ASSISTANT*
 
 Sha-Chatbot is a *full-stack AI chatbot* that answers user's natural language questions about books using a dataset.  
 It intelligently interprets queries, retrieves book information from a CSV file, and responds with human-like answers powered by Google Gemini. The frontend UI is built with React, and the backend uses FastAPI.
