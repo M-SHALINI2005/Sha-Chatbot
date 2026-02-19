@@ -49,6 +49,22 @@ Sha-Chatbot/
 HOW IT WORKS (FLOW):
 User → React UI → FastAPI API → Gemini LLM → CSV Search → Gemini Response → UI Display
 
+TECH STACK:
+Frontend:
+React.js – For building a responsive and interactive chatbot UI.
+HTML5, CSS3, JavaScript – Core web technologies for styling and functionality.
+
+Backend:
+FastAPI – Handles API logic, classification, search, and dataset parsing.
+Python 3.9+ – Programming language for backend development and AI integration.
+
+AI & NLP:
+Google Gemini LLM – Natural language understanding for interpreting user queries.
+CSV Dataset – Stores book information; queried with intelligent search logic.
+
+Optional Enhancements (Future Tech):
+TF-IDF / Semantic Search – For improved query relevance and ranking.
+Machine Learning Models – For personalized recommendations.
 SETUP & INSTALLATION:
 Prerequisites
 - Python 3.9+
@@ -90,3 +106,19 @@ npm start
 
 Frontend runs at:
 http://localhost:3000
+
+FUTURE IMPROVEMENTS:
+Expand dataset support beyond CSV for larger collections.
+Add AI-based personalized recommendations using ML models.
+Enable multilingual queries and mobile-friendly UI.
+Introduce user profiles to save preferences and reading history.
+Improve search relevance with TF-IDF or semantic ranking.
+
+LIMITATIONS:
+Relies on a static CSV; may not scale to very large datasets.
+Complex or ambiguous queries may not always be interpreted correctly.
+Basic chit-chat functionality; limited conversational depth.
+Depends on Gemini LLM API availability and internet connectivity.
+
+CONCLUSION:
+Sha-Chatbot is a full-stack chatbot that uses AI and allows users to search for books effortlessly. It uses Gemini LLM for natural language processing, which provides human-like responses and a smart search experience. The system is built using React and FastAPI and is scalable, extensible, and user-friendly, with the potential for improvements such as recommendations, semantic search, and support for multiple languages. This project showcases the use of AI, full-stack development, and intelligent information retrieval in a real-world setting.
